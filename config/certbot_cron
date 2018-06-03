@@ -1,0 +1,4 @@
+# every sunday at exactly 6AM attempt to update certs
+0 6 * * 1 root /usr/bin/certbot renew
+# two minutes later restart nginx
+2 6 * * 1 root /usr/sbin/service/ nginx restart

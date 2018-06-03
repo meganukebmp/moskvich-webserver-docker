@@ -18,6 +18,7 @@ RUN apt-get update \
 COPY config/php.ini /etc/php/7.0/fpm/php.ini
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY entrypoint.sh /tmp/entrypoint.sh
+COPY config/certbot_cron /etc/cron.d/certbot
 
 # allow exposure of port 80 (HTTP) and port 443 (SSL/HTTPS)
 EXPOSE 80 443

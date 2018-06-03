@@ -5,7 +5,7 @@ It will most likely work anywhere else. _Refer to mount paths._
 Based on **Ubuntu 16.04**
 
 ### Building
-Building is straightdorward
+Building is straightforward
 ```sh
 docker build -t <imagename> <path>
 ```
