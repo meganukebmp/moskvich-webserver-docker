@@ -20,6 +20,12 @@ COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY entrypoint.sh /tmp/entrypoint.sh
 COPY config/certbot_cron /etc/cron.d/certbot
 
+# make sure entrypoint is runnable
+RUN chmod +x /tmp/entrypoint.sh
+
+# state which volumes are to be mounted
+VOLUME ["/var/www", "/etc/letsencrypt/", "/etc/nginx/sites-enabled/"]
+
 # allow exposure of port 80 (HTTP) and port 443 (SSL/HTTPS)
 EXPOSE 80 443
 

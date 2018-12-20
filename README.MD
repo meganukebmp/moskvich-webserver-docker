@@ -21,7 +21,7 @@ docker run -t -d \
 -p 443:443 \
 -m <size> \
 -v <www_root>:/var/www/ \
--v <letsencrypt_root>:/etc/letsencrypt/
+-v <letsencrypt_root>:/etc/letsencrypt/ \
 -v <hosts_root>:/etc/nginx/sites-enabled/ \
 --restart unless-stopped --name <container_name> <imagename>
 ```
