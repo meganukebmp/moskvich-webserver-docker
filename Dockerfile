@@ -8,6 +8,7 @@ RUN apt-get update \
     nginx \
     php-fpm \
     php-gd \
+    php-mbstring \
     && rm /etc/nginx/sites-available/default \
     && rm /etc/nginx/sites-enabled/default \
     && add-apt-repository ppa:certbot/certbot \
