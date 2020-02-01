@@ -2,7 +2,7 @@
 This webserver image is created specifically for the private Moskvich server.
 It will most likely work anywhere else. _Refer to mount paths._
 
-Based on **Ubuntu 16.04**
+Based on **Ubuntu 18.04**
 
 ### Building
 Building is straightforward
