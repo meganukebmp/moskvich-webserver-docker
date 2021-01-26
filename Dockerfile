@@ -1,7 +1,7 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 
 # install all the packages we need
-# and delete a file that might conflict
+# and delete default nginx configs
 RUN apt-get update \
     && apt-get install --assume-yes \
     software-properties-common \
@@ -11,12 +11,11 @@ RUN apt-get update \
     php-mbstring \
     && rm /etc/nginx/sites-available/default \
     && rm /etc/nginx/sites-enabled/default \
-    && add-apt-repository ppa:certbot/certbot \
     && apt-get update \
-    && apt-get install --assume-yes python-certbot-nginx
+    && apt-get install --assume-yes python3-certbot-nginx
 
 # copy our configuration files and startup script
-COPY config/php.ini /etc/php/7.0/fpm/php.ini
+COPY config/php.ini /etc/php/7.4/fpm/php.ini
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY entrypoint.sh /tmp/entrypoint.sh
 COPY config/certbot_cron /etc/cron.d/certbot

@@ -2,7 +2,7 @@
 This webserver image is created specifically for the private Moskvich server.
 It will most likely work anywhere else. _Refer to mount paths._
 
-Based on **Ubuntu 16.04**
+Based on **Ubuntu 20.04**
 
 ### Building
 Building is straightforward
@@ -12,7 +12,7 @@ docker build -t <imagename> <path>
 
 ### Deployment
 This Docker image uses quite a bit of hot mounting for persistence of modifyable directories and configuration files. 
-**Please set up permissions carefully to avoid potential security risks!** `755 rwx-rx-rx` is sufficient for `/var/www` with writable directories mounted as `775 rwx-rwx-rx` with group set to php's `www-data`.
+**Please set up permissions carefully to avoid potential security risks!** `755 rwx-rx-rx` is sufficient for `/var/www` with writable directories mounted as `775 rwx-rwx-rx` with group set to something unique, like `web-admin`.
 
 **Runing**:
 ```sh
