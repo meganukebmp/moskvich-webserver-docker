@@ -5,6 +5,7 @@ FROM ubuntu:20.04
 RUN apt-get update \
     && apt-get install --assume-yes \
     software-properties-common \
+    cron \
     nginx \
     php-fpm \
     php-gd \
