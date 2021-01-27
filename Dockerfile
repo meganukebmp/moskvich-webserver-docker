@@ -17,11 +17,11 @@ RUN apt-get update \
 # copy our configuration files and startup script
 COPY config/php.ini /etc/php/7.4/fpm/php.ini
 COPY config/nginx.conf /etc/nginx/nginx.conf
-COPY entrypoint.sh /tmp/entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 COPY config/certbot_cron /etc/cron.d/certbot
 
 # make sure entrypoint is runnable
-RUN chmod +x /tmp/entrypoint.sh
+RUN chmod 555 /entrypoint.sh
 
 # state which volumes are to be mounted
 VOLUME ["/var/www", "/etc/letsencrypt/", "/etc/nginx/sites-enabled/"]
@@ -30,4 +30,4 @@ VOLUME ["/var/www", "/etc/letsencrypt/", "/etc/nginx/sites-enabled/"]
 EXPOSE 80 443
 
 # execute our entrypoint script, on container init
-CMD ["/tmp/entrypoint.sh"]
+CMD ["/entrypoint.sh"]
