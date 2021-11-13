@@ -9,4 +9,4 @@ nginx -v
 echo Attempting Certificate renewall...
 certbot renew
 echo Running!
-tail -f /dev/null
+sleep infinity
