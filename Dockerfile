@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Sofia
@@ -6,20 +6,20 @@ ENV TZ=Europe/Sofia
 # install all the packages we need
 # and delete default nginx configs
 RUN apt-get update \
-    && apt-get install --assume-yes \
+    && apt-get install --assume-yes --no-install-recommends \
     software-properties-common \
     cron \
     nginx \
     php-fpm \
     php-gd \
     php-mbstring \
+    python3-certbot-nginx \
     && rm /etc/nginx/sites-available/default \
     && rm /etc/nginx/sites-enabled/default \
-    && apt-get update \
-    && apt-get install --assume-yes python3-certbot-nginx
+    && rm -rf /var/lib/apt/lists/*
 
 # copy our configuration files and startup script
-COPY config/php.ini /etc/php/8.1/fpm/php.ini
+COPY config/php.ini /etc/php/8.3/fpm/php.ini
 COPY config/nginx.conf /etc/nginx/nginx.conf
 COPY entrypoint.sh /entrypoint.sh
 COPY config/certbot_cron /etc/cron.d/certbot
